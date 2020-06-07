@@ -25,10 +25,8 @@ public class BysykkelController {
         this.bysykkelService = bysykkelService;
     }
 
-
     @GetMapping("/bysykkel")
-    public ModelAndView displayArticle(Map<String, Object> model) {
-
+    public ModelAndView visBysykler(Map<String, Object> model) {
         List<Status> statuses = bysykkelService.retrieveStationStatus().getData().getStations();
         List<Station> stations = bysykkelService.retrieveStationInformation().getData().getStations();
 
@@ -48,7 +46,7 @@ public class BysykkelController {
                 .filter(station -> station.getStationId().equals(stationId))
                 .findAny().map(Station::getName)
                 .orElseGet(() -> {
-                    LOGGER.warn("Name for staion with id {} is missing.", stationId);
+                    LOGGER.warn("Name for station with id {} is missing.", stationId);
                     return "Ukjent navn";
                 });
     }
