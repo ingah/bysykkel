@@ -1,5 +1,7 @@
- {{#stations}}
-    <b>{{name}}</b>
-    <p>{{numAvailableLocks}} ledige plasser
-     <br/> {{numAvailableBikes}} ledige sykler</p>
-    {{/stations}}
+{{#stations}}
+<tr>
+    <td>{{name}}</td>
+    <td>🔓 {{numAvailableLocks}}</td>
+    <td>🚲 {{numAvailableBikes}} </td>
+</tr>
+{{/stations}}

@@ -32,17 +32,19 @@
 <!-- Primary Page Layout
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div class="container">
-    <div class="row">
-        <div class="eleven columns">
-            <h3>Velkommen til bysykkeloversikten</h3>
-            {{>station}}
-        </div>
-    </div>
-</div>
-
-<div class="container">
     <h1>Velkommen til bysykkeloversikten</h1>
-    {{>station}}
+    <table>
+        <thead>
+            <tr>
+                <th>Navn på stativ</th>
+                <th>Tilgjengelige låser</th>
+                <th>Ledige sykler</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{>station}}
+        </tbody>
+    </table>
 </div>
 
 </body>

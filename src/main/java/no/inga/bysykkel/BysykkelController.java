@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static java.util.Comparator.comparing;
+
 @Controller
 public class BysykkelController {
     Logger LOGGER = LoggerFactory.getLogger(BysykkelController.class);
@@ -26,22 +28,23 @@ public class BysykkelController {
     }
 
     @GetMapping("/bysykkel")
-    public ModelAndView visBysykler(Map<String, Object> model) {
+    public ModelAndView stationsWithAvailableLocksAndBikes(Map<String, Object> model) {
         List<Status> statuses = bysykkelService.retrieveStationStatus().getData().getStations();
         List<Station> stations = bysykkelService.retrieveStationInformation().getData().getStations();
 
         List<StationDto> stationDtos = statuses.stream().map(
                 station -> new StationDto(
-                        getStationName(station.getStationId(), stations),
+                        findStationName(station.getStationId(), stations),
                         station.getNumDocksAvailable(),
                         station.getNumBikesAvailable()))
+                .sorted(comparing(StationDto::getName))
                 .collect(Collectors.toList());
-        model.put("stations", stationDtos);
 
+        model.put("stations", stationDtos);
         return new ModelAndView("index", model);
     }
 
-    private String getStationName(String stationId, List<Station> stations) {
+    private String findStationName(String stationId, List<Station> stations) {
         return stations.stream()
                 .filter(station -> station.getStationId().equals(stationId))
                 .findAny().map(Station::getName)

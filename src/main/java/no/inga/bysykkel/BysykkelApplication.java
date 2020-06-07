@@ -23,7 +23,7 @@ public class BysykkelApplication {
         return WebClient
                 .builder()
                 .baseUrl("https://gbfs.urbansharing.com/oslobysykkel.no/")
-                .defaultHeader("Client-Identifier", "inga-kodeoppgave")
+                .defaultHeader("Client-Identifier", "inga-bysykkeloversikt")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
     }
