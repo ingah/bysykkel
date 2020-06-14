@@ -7,7 +7,8 @@
 > java -jar target/bysykkel-0.0.1-SNAPSHOT.jar
 ```
 
-Åpne en nettleser og tast inn http://localhost:8080/bysykkel
+Grafisk oversikt tilgjengelig på http://localhost:8080/bysykkel<br/>
+JSON tilgjengelig på http://localhost:8080/stations
 
 #### Windows
 ```
@@ -16,4 +17,5 @@
 > java -jar target\bysykkel-0.0.1-SNAPSHOT.jar
 ```
 
-Åpne en nettleser og tast inn http://localhost:8080/bysykkel
+Grafisk oversikt tilgjengelig på http://localhost:8080/bysykkel<br/>
+JSON tilgjengelig på http://localhost:8080/stations
